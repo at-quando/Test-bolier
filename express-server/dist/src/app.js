@@ -1,6 +1,5 @@
 const config = require('./config');
 const app = require('../src/lib/Express');
-const models = require('../src/models');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
@@ -17,8 +16,15 @@ if (!module.parent) {
   });
 }
 
+if (!module.parent) {
+  // listen on port config.port
+  app.listen(config.port, onStarted);
+  app.on('error', onError);
+  app.on('listening', onListening);
+}
+
 function onStarted() {
-  console.info(`Server started on port ${config.port} (${config.env})`);
+  console.info(`Server started on port ${config.port}`);
 }
 
 function onError(e) {

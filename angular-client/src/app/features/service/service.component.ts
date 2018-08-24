@@ -10,6 +10,10 @@ export class ServiceComponent implements OnInit {
   isInit: boolean;
   profile: any;
   team: any;
+  name: string;
+  age: number;
+  user: any;
+  users: any;
 
   constructor(
     private api: ApiService,
@@ -21,6 +25,7 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit() {
     this.isInit = false;
+    this.getUsers();
   }
 
   getProfile() {
@@ -39,6 +44,33 @@ export class ServiceComponent implements OnInit {
     this.api.get(['fe.json']).subscribe(
       (data: any) => {
         this.team = data || {};
+      }, (err: any) => {
+        //
+      }, () => {
+        //
+      }
+    );
+  }
+
+  addUser() {
+    this.users.push({name: this.name, age: this.age});
+    this.api.post('users',{name: this.name, age: this.age}).subscribe(
+      (data: any) => {
+        this.user = data || {};
+        console.log('OK',this.user);
+      }, (err: any) => {
+        //
+      }, () => {
+        //
+      }
+    );
+  }
+
+  getUsers() {
+    this.api.get('users').subscribe(
+      (data: any) => {
+        this.users = data || {};
+        console.log(this.users);
       }, (err: any) => {
         //
       }, () => {

@@ -1,4 +1,5 @@
 const express = require('express');
+const userRoutes = require('./UserRoute');
 // const protectedRoutes = require('./ProtectRoute');
 
 const router = express.Router();
@@ -7,9 +8,10 @@ const router = express.Router();
 
 /** GET / - Check service health */
 router.get('/api', (req, res) =>
-  res.send('OK')
+  res.send('OK man')
 );
 
 // router.use('/api/facilities', facilityRoutes);
+router.use('/api/users', userRoutes);
 
 module.exports = router;

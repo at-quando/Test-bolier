@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"UserRoute.js","sourceRoot":"../../../../.."}
+{"version":3,"sources":["src/routes/UserRoute.js"],"names":["express","require","router","Router","UserCtrl","get","index","post","create","module","exports"],"mappings":"AAAA;AACA,MAAMA,UAAUC,QAAQ,SAAR,CAAhB;AACA,MAAMC,SAASF,QAAQG,MAAR,EAAf;AACA,MAAMC,WAAWH,QAAQ,8BAAR,CAAjB;;AAEA;AACAC,OAAOG,GAAP,CAAW,GAAX,EAAgBD,SAASE,KAAzB;;AAEA;AACAJ,OAAOK,IAAP,CAAY,GAAZ,EAAiBH,SAASI,MAA1B;;AAEAC,OAAOC,OAAP,GAAiBR,MAAjB","file":"UserRoute.js","sourceRoot":"../../../../.."}
