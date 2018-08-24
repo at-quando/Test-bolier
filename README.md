@@ -2,6 +2,7 @@
 
 - A project for Docker, Docker Compose, intergrating Angular 4, Nodejs, MongoDB.
 - Clone the project first and try to follow the instruction.
+
 =========================
 #DOCKER DOCUMENT
 > This project was combined by docker-compose. It has 2 main parts: Angular-client (port 4100) and express-server (port 3000). With docker-compose, they can run together by only some command lines.
@@ -66,6 +67,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 >  We use gulp for making server watch changes. You can learn about gulp in `gulpjs.com`.
 ## Structure
 > The project is devided follow MVC pattern. 
+
+
 =========================
 #MONGODB DOCUMENT
 > Mongodb is designed to work with Nodejs. 
