@@ -2,18 +2,18 @@
 FROM node:10
 
 # Create a directory where our app will be placed
-RUN mkdir -p /front-end
+RUN mkdir -p /frontend
 
 # Copy dependency definitions
-WORKDIR /front-end
+WORKDIR /frontend
 
-COPY package.json /front-end
+COPY package.json /frontend
 
 # Install dependecies
 RUN npm install
 
 # Get all the code needed to run the app
-COPY . /front-end
+COPY . /frontend
 
 # Expose the port the app runs in
 EXPOSE 4100

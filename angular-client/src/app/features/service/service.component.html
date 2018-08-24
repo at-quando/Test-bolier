@@ -54,6 +54,28 @@
         </div>
         <button *ngIf="!team" type="button" class="btn btn-outline-info" (click)="getTeam()">Get Info</button>
       </div>
+      <div class="mt-4">
+        <h4>Request User</h4>
+        <div class="">
+          Show all User
+        </div>
+        <div class="card mt-2 mb-2" style="width: 20rem;">
+          <ul *ngIf="users">
+            <li *ngFor="let item of users">
+              <label>Name: </label><span>{{item.name}}</span>
+              <label>Age: </label><span>{{item.age}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="">
+          Add User
+        </div>
+        <div class="card mt-2 mb-2" style="width: 20rem;">
+          <input placeholder="name" id="name" [(ngModel)]="name">
+          <input placeholder="age" id="age" [(ngModel)]="age">
+        </div>
+        <button *ngIf="!team" type="button" class="btn btn-outline-info" (click)="addUser()">Add</button>
+      </div>
     </ng-template>
   </div>
 </main>
