@@ -4,6 +4,7 @@
 - Clone the project first and try to follow the instruction.
 
 =========================
+
 #DOCKER DOCUMENT
 > This project was combined by docker-compose. It has 2 main parts: Angular-client (port 4100) and express-server (port 3000). With docker-compose, they can run together by only some command lines.
 > We need to build the images and containers first
@@ -25,6 +26,7 @@ docker ps -a `show all containers were stopped`
 docker images `show all images`
 ```
 =========================
+
 #ANGULAR DOCUMENT
 > This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
@@ -59,6 +61,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 =========================
+
 #NODEJS DOCUMENT
 > We work with Js framework ( Express JS) for making web development. 
 > Use postman, `get` request to `http://localhost:3000/api` for making sure the server is running. 
@@ -70,6 +73,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 =========================
+
 #MONGODB DOCUMENT
 > Mongodb is designed to work with Nodejs. 
 > Docker run mongo automatically.
