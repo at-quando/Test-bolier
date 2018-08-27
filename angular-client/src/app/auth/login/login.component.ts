@@ -24,18 +24,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(formData: any) {
-    this.canAction = false;
-    this.hasError = false;
-    this.api.get(['token.json']).subscribe(
-      (data: any) => {
-        this.auth.login(data.access_token);
-      }, (err: any) => {
-        this.hasError = true;
-        this.canAction = true;
-      }, () => {
-        //
-      }
-    );
+    var access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJEdW1teSB0b2tlbiIsImlhdCI6MTUwNzcwNTcwNCwiZXhwIjoxNTcwNzc3NzA0LCJhdWQiOiJhc2lhbnRlY2gudm4iLCJzdWIiOiJ0ZWFtLmZlQGFzaWFudGVjaC52biIsImF1dGhvciI6IkFUIEZyb250IEVuZCBUZWFtIiwiZW1haWwiOiJ0ZWFtLmZlQGFzaWFudGVjaC52biJ9.UsXvYEkACyavwqpsxjxKqb2FSAh4tfXoLDKrNIKG8J0';
+    this.auth.login(access_token);
   }
 
 }
