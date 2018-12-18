@@ -12,7 +12,7 @@ services:
       - ./angular-client:/frontend/:rw
       - /frontend/node_modules
     ports:
-      - "4100:4100" # specify port forewarding
+      - "4100:4100" # specify port forwarding
     restart: always
 
   express: #name of the second service
@@ -21,7 +21,7 @@ services:
       - ./express-server:/backend/:rw
       - /backend/node_modules
     ports:
-      - "3000:3000" #specify ports forewarding
+      - "3300:3000" #specify ports forwarding
     restart: always
     links:
       - database # link this service to the database service
@@ -29,4 +29,4 @@ services:
   database: # name of the third service
     image: mongo # specify image to build container from
     ports:
-      - "27017:27017" # specify port forewarding
+      - "27017:27017" # specify port forwarding

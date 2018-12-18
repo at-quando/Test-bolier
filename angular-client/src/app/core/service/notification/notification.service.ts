@@ -1,7 +1,7 @@
+
+import { first } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/first';
+import { Subject ,  Observable } from 'rxjs';
 
 export interface Msg {
   type?: string;
@@ -61,7 +61,7 @@ export class NotificationService {
    */
   dialog(dialog: Dialog = null) {
     this.dialog$.next(dialog);
-    return this.dialogCallback$.asObservable().first();
+    return this.dialogCallback$.asObservable().pipe(first());
   }
 
   dialogCallback(confirm: boolean = false) {

@@ -51,7 +51,7 @@ export class UtilitiesComponent implements OnInit {
   }
 
   showMsg(type: string, options: boolean = false) {
-    let config: any = {
+    const config: any = {
       type: type,
       msg: `alert.${type}`
     };

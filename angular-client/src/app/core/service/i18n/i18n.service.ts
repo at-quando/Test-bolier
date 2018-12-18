@@ -20,7 +20,7 @@ export class I18nService {
 
   constructor(public translate: TranslateService) {
     // Get current lang from localstorage
-    let _currentLang = this.getCurrentLang();
+    const _currentLang = this.getCurrentLang();
 
     // Default is English
     this.usedLang = _currentLang === null ? 'en' : _currentLang;
@@ -43,7 +43,7 @@ export class I18nService {
     // Set current lang to localstorage
     localStorage.setItem('lang', this.usedLang);
 
-    let index = I18nService.SUPPORTED_LANGUAGES.findIndex((item) => item.code === this.usedLang);
+    const index = I18nService.SUPPORTED_LANGUAGES.findIndex((item) => item.code === this.usedLang);
     if (index !== -1) {
       I18nService.SUPPORTED_LANGUAGES[index]['active'] = I18nService.ACTIVE_TYPE;
     }

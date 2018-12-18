@@ -47,8 +47,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Lock
-/package-lock.json
-
 # env
 *.env

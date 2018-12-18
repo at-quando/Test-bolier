@@ -39,7 +39,7 @@ export class LoadingDirective implements OnInit, OnChanges {
       } else {
         this.renderLoadingIcon();
       }
-      //append new above current element
+      // append new above current element
       this.el.nativeElement.appendChild(this.loadingContent, this.el.nativeElement);
     } else {
       this.removeLoadingContent();
@@ -55,20 +55,20 @@ export class LoadingDirective implements OnInit, OnChanges {
 
   renderErrorElm() {
     this.loadingContent = this.renderer.createElement(this.el.nativeElement.parentNode, 'div');
-    //setting class name is text-na
+    // setting class name is text-na
     this.loadingContent.setAttribute('class', 'text-danger');
     this.loadingContent.innerHTML = 'API server not response.';
   }
 
   renderLoadingIcon(isLarge: boolean = true) {
-    let cls: string = 'loading-icon';
+    let cls = 'loading-icon';
     if (isLarge) {
       cls = `${cls} icon-large`;
     } else {
       cls = `${cls} icon-inline`;
     }
     this.loadingContent = this.renderer.createElement(this.el.nativeElement.parentNode, 'img');
-    //setting class name is text-na
+    // setting class name is text-na
     this.loadingContent.setAttribute('src', '/assets/img/loading.svg');
     this.loadingContent.setAttribute('class', cls);
     this.loadingContent.setAttribute('alt', 'Loading...');
