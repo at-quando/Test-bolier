@@ -125,6 +125,7 @@ execute_build() {
 
 
   pre_build $1 $2
+  check_sudo
 
   if [ "$2" = "--maintenance" ]; then
     suspend $1 $2
