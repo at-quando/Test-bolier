@@ -15,7 +15,7 @@ set -e
   password=""
   version=""
   SUDO=""
-  PUBLIC_HTML="/var/www/html/"
+  PUBLIC_HTML="/var/www/test"
   SOURCE_DIR="Source"
 
 shopt -s extglob
@@ -81,10 +81,10 @@ suspend() {
 
 deploy() {
   printf "$yellow> Removing old code...\n"
-  sudo rm -rf $PUBLIC_HTML*
+  sudo -S rm -rf $PUBLIC_HTML*
 
   printf "$cyan> Moving new app to root folder...\n"
-  sudo mv ~/$SOURCE_DIR/build/* $PUBLIC_HTML
+  sudo -S mv ~/$SOURCE_DIR/build/* $PUBLIC_HTML
 
   if [ "$2" = "--maintenance" ]; then
     printf "$red> Server $ENV_NAME has suspended!$reset\n"
@@ -125,7 +125,6 @@ execute_build() {
 
 
   pre_build $1 $2
-  check_sudo
 
   if [ "$2" = "--maintenance" ]; then
     suspend $1 $2
