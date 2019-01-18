@@ -1,0 +1,38 @@
+# compiled output
+dist
+tmp
+*.zip
+
+# dependencies
+node_modules
+bower_components
+
+# IDEs and editors
+.idea
+.vscode
+.project
+.classpath
+*.launch
+.settings/
+
+# misc
+.docker
+.script
+.github
+.circleci
+.sass-cache
+connect.lock
+coverage/*
+libpeerconnection.log
+npm-debug.log
+testem.log
+typings
+*.lock
+
+# e2e
+e2e/*.js
+e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db

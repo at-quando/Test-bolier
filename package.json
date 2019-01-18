@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
+    "deploy": "bash ./deploy/staging.sh --stg",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -52,6 +53,6 @@
     "rxjs-compat": "^6.3.3",
     "ts-node": "~7.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "3.1.6"
   }
 }

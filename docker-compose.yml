@@ -2,31 +2,18 @@ version: '2' # specify docker-compose version
 
 # Define the services/containers to be run
 services:
-  angular: # name of the first service
-    build: angular-client # specify the directory of the Dockerfile
+  revamp-dev: # name of the first service
+    build: 
+      context: .
+      args:
+        - APP_DIR=/FE-REVAMP
+      dockerfile: Dockerfile
     environment:
-      - APP_DIR=/frontend
-    container_name: frontend
-    image: angular-client
+      - APP_DIR=/FE-REVAMP
+    container_name: fe-revamp
+    image: fe-revamp-angular
     volumes:
-      - ./angular-client:/frontend/:rw
-      - /frontend/node_modules
+      - .:/FE-REVAMP/:rw
     ports:
       - "4100:4100" # specify port forwarding
     restart: always
-
-  express: #name of the second service
-    build: express-server # specify the directory of the Dockerfile
-    volumes:
-      - ./express-server:/backend/:rw
-      - /backend/node_modules
-    ports:
-      - "3300:3000" #specify ports forwarding
-    restart: always
-    links:
-      - database # link this service to the database service
-
-  database: # name of the third service
-    image: mongo # specify image to build container from
-    ports:
-      - "27017:27017" # specify port forwarding

@@ -24,6 +24,7 @@ export class I18nService {
 
     // Default is English
     this.usedLang = _currentLang === null ? 'en' : _currentLang;
+    console.log('runnin lang');
     this.setLang();
   }
 

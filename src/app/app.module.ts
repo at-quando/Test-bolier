@@ -51,7 +51,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        throwNoTokenError: true
+        // throwNoTokenError: true
       }
     }),
     TranslateModule.forRoot({
