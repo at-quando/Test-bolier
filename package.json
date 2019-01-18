@@ -7,6 +7,8 @@
     "start": "ng serve --host 0.0.0.0",
     "deploy": "bash ./deploy/staging.sh --stg",
     "build": "ng build",
+    "build.stg": "ng build",
+    "build.prod": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
