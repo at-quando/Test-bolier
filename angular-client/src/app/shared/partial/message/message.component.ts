@@ -30,7 +30,7 @@ export class MessageComponent implements OnInit {
     clearTimeout(this.timeout);
     this.config = config;
     this.isEnable = true;
-    let timeout = this.config.timeout || 3000;
+    const timeout = this.config.timeout || 3000;
     this.timeout = setTimeout(() => {
       this.isEnable = false;
       clearTimeout(this.timeout);

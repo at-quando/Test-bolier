@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, AuthService, I18nService } from '../../core/service/index';
+import { AuthService, I18nService } from '../../core/service/index';
+import { User, Team, ServiceService } from './service.service';
 
 @Component({
   selector: 'app-service',
@@ -9,16 +10,16 @@ export class ServiceComponent implements OnInit {
 
   isInit: boolean;
   profile: any;
-  team: any;
+  team: Team;
   name: string;
   age: number;
-  user: any;
-  users: any;
+  user: User;
+  users: User[];
 
   constructor(
-    private api: ApiService,
     private auth: AuthService,
-    private i18n: I18nService
+    private i18n: I18nService,
+    private serviceService: ServiceService
   ) {
     this.isInit = true;
   }
@@ -41,9 +42,9 @@ export class ServiceComponent implements OnInit {
   }
 
   getTeam() {
-    this.api.get(['fe.json']).subscribe(
-      (data: any) => {
-        this.team = data || {};
+    this.serviceService.getTeam().subscribe(
+      (data: Team) => {
+        this.team = data;
       }, (err: any) => {
         //
       }, () => {
@@ -53,11 +54,10 @@ export class ServiceComponent implements OnInit {
   }
 
   addUser() {
-    this.users.push({name: this.name, age: this.age});
-    this.api.post('users',{name: this.name, age: this.age}).subscribe(
-      (data: any) => {
-        this.user = data || {};
-        console.log('OK',this.user);
+    this.serviceService.addUser({name: this.name, age: this.age}).subscribe(
+      (data: User) => {
+        this.users.push({name: this.name, age: this.age});
+        this.user = data;
       }, (err: any) => {
         //
       }, () => {
@@ -67,10 +67,9 @@ export class ServiceComponent implements OnInit {
   }
 
   getUsers() {
-    this.api.get('users').subscribe(
-      (data: any) => {
-        this.users = data || {};
-        console.log(this.users);
+    this.serviceService.getUsers().subscribe(
+      (data: User[]) => {
+        this.users = data;
       }, (err: any) => {
         //
       }, () => {

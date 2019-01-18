@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { HttpRequest, HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subject, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { API_BASE_URL } from '../config/api.config';
+
+const API_PATH = {
+  login: 'login',
+  logout: 'logout'
+};
+export interface LoginData {
+  email: string;
+  password: string;
+}
 
 @Injectable()
 export class AuthService {
 
   private logger = new Subject<boolean>();
+  cachedRequests: Array<HttpRequest<any>> = [];
   referralRoute: string;
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper = new JwtHelperService();
 
   constructor(
+    private httpClient: HttpClient,
     private router: Router
   ) {}
 
@@ -20,10 +32,31 @@ export class AuthService {
     return this.logger.asObservable();
   }
 
-  login(jwt: any) {
+  setToken(jwt: string): void {
     localStorage.setItem('token', jwt);
-    this.logger.next(true);
-    this.redirectToPrevStep();
+  }
+
+  getToken(): string {
+    return localStorage.getItem('token');
+  }
+
+  login(loginData: LoginData): Observable<any> {
+
+    /**
+     * Replace `of()` with an actual login request
+     * ex: this.httpClient.post(`${API_BASE_URL}${API_PATH.login}`, loginData)
+     */
+    return of({
+      // tslint:disable-next-line:max-line-length
+      access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJEdW1teSB0b2tlbiIsImlhdCI6MTUwNzcwNTcwNCwiZXhwIjoxNTcwNzc3NzA0LCJhdWQiOiJhc2lhbnRlY2gudm4iLCJzdWIiOiJ0ZWFtLmZlQGFzaWFudGVjaC52biIsImF1dGhvciI6IkFUIEZyb250IEVuZCBUZWFtIiwiZW1haWwiOiJ0ZWFtLmZlQGFzaWFudGVjaC52biJ9.UsXvYEkACyavwqpsxjxKqb2FSAh4tfXoLDKrNIKG8J0'
+    })
+    .pipe(
+      map((data: any) => {
+        this.logger.next(true);
+        this.redirectToPrevStep();
+        this.setToken(data.access_token);
+      })
+    );
   }
 
   logout() {
@@ -33,7 +66,7 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     let isAuthenticated: boolean;
     if (this.isTokenInvalid() || this.jwtHelper.isTokenExpired(token)) {
       localStorage.removeItem('token');
@@ -45,8 +78,8 @@ export class AuthService {
   }
 
   getUserInfo() {
-    let token = localStorage.getItem('token');
-    let userInfo = this.jwtHelper.decodeToken(token);
+    const token = localStorage.getItem('token');
+    const userInfo = this.jwtHelper.decodeToken(token);
     return userInfo || {};
     // console.log(
     //   this.jwtHelper.decodeToken(token),
@@ -55,12 +88,13 @@ export class AuthService {
     // );
   }
 
+
   isTokenInvalid() {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (!token) {
       return true
     } else {
-      let parts = token.split('.');
+      const parts = token.split('.');
       if (parts.length !== 3) {
         return true
       }
@@ -78,7 +112,7 @@ export class AuthService {
   }
 
   redirectToPrevStep() {
-    let route = this.referralRoute ? this.referralRoute : '/';
+    const route = this.referralRoute ? this.referralRoute : '/';
     this.router.navigateByUrl(route);
   }
 

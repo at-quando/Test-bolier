@@ -1,6 +1,6 @@
 # b-docker-Angular-Nodejs-Mongo
 
-- A project for Docker, Docker Compose, intergrating Angular 4, Nodejs, MongoDB.
+- A project for Docker, Docker Compose, intergrating Angular 7, Nodejs, MongoDB.
 - Clone the project first and try to follow the instruction.
 
 =========================

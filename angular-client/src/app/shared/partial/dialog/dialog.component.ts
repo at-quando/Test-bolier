@@ -51,7 +51,7 @@ export class DialogComponent implements OnInit {
   }
 
   show(config: any) {
-    let type = config.type === 'confirm' ? 'confirm' : 'alert';
+    const type = config.type === 'confirm' ? 'confirm' : 'alert';
     this.dialog = Object.assign(this.default[type], config);
     this.isVisible = true;
   }
